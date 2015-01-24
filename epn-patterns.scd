@@ -2,7 +2,7 @@
 // BASE PATTERNS
 
 (
-Pdef(\velbase, Pbind(
+Pdef(\epn_base, Pbind(
 	\instrument, \epiano,
 	\vel, Prand([0, 0.1, 0.2, 0.3, 0.3, 0.9], inf),
 	\amp, 1
