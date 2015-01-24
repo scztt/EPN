@@ -1,5 +1,5 @@
 SynthDef(\epiano, {
-	| freq, amp = 1, dur=1, gate=1, vel = 0.75, retrig = 0, crash=1 |
+	| out=0, freq, amp = 1, dur=1, gate=1, vel = 0.75, retrig = 0, crash=1 |
 	var sig, fmSig, noise, env, linenv, ctls, mods, mult, timescale, at,
 	attack, scale, vib, filtf, a, lfo;
 
@@ -55,5 +55,5 @@ SynthDef(\epiano, {
 	sig = sig * EnvGen.kr(Env([1, 1, 0], [1, 2], releaseNode:1), gate:Impulse.kr(0) + gate, doneAction:2);
 	a = DetectSilence.ar(sig[0], doneAction:2);
 	amp = amp * vel.linlin(0, 1, -6.dbamp, 0.dbamp);
-	Out.ar(10, sig * amp)
+	Out.ar(out, sig * amp)
 }).addReplace;
